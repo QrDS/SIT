@@ -5,10 +5,10 @@ library(xtable)
 # Load Systematic Investor Toolbox (SIT)
 # http://systematicinvestor.wordpress.com/systematic-investor-toolbox/
 ###############################################################################
-if(!file.exists('../sit'))
-  shiny:::download('https://github.com/systematicinvestor/SIT/raw/master/sit.lite.gz', '../sit', mode = 'wb', quiet = TRUE)
-con = gzcon(file('../sit', 'rb'))
-source(con)
+require(RCurl)
+sit = getURLContent('https://github.com/systematicinvestor/SIT/raw/master/sit.gz', binary=TRUE, followlocation = TRUE, ssl.verifypeer = FALSE)
+    con = gzcon(rawConnection(sit, 'rb'))
+    source(con)
 close(con)
 
 load.packages('Quandl')
