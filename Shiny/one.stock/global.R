@@ -5,7 +5,7 @@ library(xtable)
 # Load Systematic Investor Toolbox (SIT)
 # http://systematicinvestor.wordpress.com/systematic-investor-toolbox/
 ###############################################################################
-con = gzcon(file('c:/temp/sit.gz', 'rb'))
+con = gzcon(url('http://www.systematicportfolio.com/sit.gz', 'rb'))
     source(con)
 close(con)
 
