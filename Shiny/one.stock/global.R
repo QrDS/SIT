@@ -5,9 +5,7 @@ library(xtable)
 # Load Systematic Investor Toolbox (SIT)
 # http://systematicinvestor.wordpress.com/systematic-investor-toolbox/
 ###############################################################################
-require(RCurl)
-sit = getURLContent('https://github.com/systematicinvestor/SIT/raw/master/sit.gz', binary=TRUE, followlocation = TRUE, ssl.verifypeer = FALSE)
-    con = gzcon(rawConnection(sit, 'rb'))
+con = gzcon(file('c:/temp/sit.gz', 'rb'))
     source(con)
 close(con)
 
