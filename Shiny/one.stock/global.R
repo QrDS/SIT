@@ -1,7 +1,7 @@
 library(shiny)
 library(xtable)
 
-install.packages('curl', repos = 'http://cran.r-project.org')
+#install.packages('curl', repos = 'http://cran.r-project.org')
 
 install.packages("quantmod")
 library(quantmod)
