@@ -5,9 +5,11 @@ library(xtable)
 # Load Systematic Investor Toolbox (SIT)
 # http://systematicinvestor.wordpress.com/systematic-investor-toolbox/
 ###############################################################################
-con = gzcon(url('http://www.systematicportfolio.com/sit.gz', 'rb'))
+setInternet2(TRUE)
+con = gzcon(url('https://github.com/systematicinvestor/SIT/raw/master/sit.gz', 'rb'))
     source(con)
 close(con)
+ 
 
 load.packages('Quandl')
 load.packages('kernlab')
