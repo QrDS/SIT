@@ -12,7 +12,7 @@ con = gzcon(file('../sit', 'rb'))
 source(con)
 close(con)
 
-
+load.packages('Quandl')
 load.packages('kernlab')
 
 load.packages('googleVis')
