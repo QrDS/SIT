@@ -13,7 +13,7 @@ source(con)
 close(con)
 
 
-
+load.packages('kernlab')
 
 load.packages('googleVis')
 
