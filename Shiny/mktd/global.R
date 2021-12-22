@@ -15,7 +15,7 @@ close(con)
 
 
 
-
+load.packages('googleVis')
 
 load.packages('quantmod')
 if (!require(quantmod)) {
