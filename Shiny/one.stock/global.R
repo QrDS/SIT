@@ -12,14 +12,29 @@ library(devtools)
 install.packages("quadprog")
 library(quantmod)
 
-devtools::install_github('systematicinvestor/SIT.date')
+# By default, the directories in .libPaths() aren't writable on shinyapps.io, so
+# create a subdir where we'll install our package.
+if (!file.exists("R-lib")) {
+  dir.create("R-lib")
+}
+# Unfortunately, there's no way to get deployapp() to ignore this directory, so
+# make sure to remove it locally before you call deployapp(). This can be done
+# with:
+#   unlink("pkgInst/R-lib", recursive = TRUE)
 
-#library(curl)
-#curl_download('https://github.com/systematicinvestor/SIT/raw/master/SIT.tar.gz', 'sit',mode = 'wb',quiet=T)
-devtools::install_github('systematicinvestor/SIT/raw/master/SIT.tar.gz')
+# You may also need to restart R before calling deployapp(), because calling
+# runApp() will modify your libpath (below), which can confuse deployapp().
 
+# Add ./R-lib/ to the libPaths
+.libPaths( c(normalizePath("R-lib/"), .libPaths()) )
 
-library(SIT)
+# Install the package if needed.
+if (!do.call(require, list("SIT"))) {
+  install.packages("SIT.tar.gz", repos = NULL, type = "source")
+}
+
+do.call(library, list("SIT"))
+
 
 
 load.packages('Quandl')
