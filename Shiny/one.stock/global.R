@@ -1,24 +1,33 @@
-
 library(shiny)
 library(xtable)
 
+install.packages('curl', repos = 'http://cran.r-project.org')
 
-###############################################################################
-# Load Systematic Investor Toolbox (SIT)
-# http://systematicinvestor.wordpress.com/systematic-investor-toolbox/
-###############################################################################
-if(!file.exists('../sit'))
-	shiny:::download('https://github.com/systematicinvestor/SIT/raw/master/sit.lite.gz', '../sit', mode = 'wb', quiet = TRUE)
-con = gzcon(file('../sit', 'rb'))
-	source(con)
-close(con)
+install.packages("quantmod")
+library(quantmod)
 
+install.packages("devtools")
+library(devtools)
 
+install.packages("quadprog")
+library(quantmod)
 
+devtools::install_github('systematicinvestor/SIT.date')
 
+library(curl)
+curl_download('https://github.com/systematicinvestor/SIT/raw/master/SIT.tar.gz', 'sit',mode = 'wb',quiet=T)
+install.packages('sit', repos = NULL, type='source')
 
 library(SIT)
 
+
+
+load.packages('Quandl')
+load.packages('kernlab')
+
+load.packages('googleVis')
+
 load.packages('quantmod')
 if (!require(quantmod)) {
-
+  stop("This app requires the quantmod package. To install it, run 'install.packages(\"quantmod\")'.\n")
+}
